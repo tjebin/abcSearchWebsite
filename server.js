@@ -20,6 +20,8 @@ app.use('/api/posts', posts);
 app.use('/api/profile', profile);
 app.use('/api/auth', auth);
 
+console.log('.....................server started' + process.env.NODE_ENV);
+
 
 if (process.env.NODE_ENV === 'production') {
     // set static folder
