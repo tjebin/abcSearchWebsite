@@ -13,7 +13,7 @@ connectDB();
 //Init Middleware
 app.use(express.json({ extended: false }));
 //app.get('/', (req, res) => res.send('API Running'));
-app.use(cors());
+//app.use(cors());
 // define routes
 app.use('/api/users', users);
 app.use('/api/posts', posts);
