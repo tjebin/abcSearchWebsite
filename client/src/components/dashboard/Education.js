@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import { deleteEducation } from '../../actions/profile';
 
 const Education = ({ education, deleteEducation }) => {
-
     const deleteEducationClick = (edu_id) => {
         deleteEducation(edu_id);
     }

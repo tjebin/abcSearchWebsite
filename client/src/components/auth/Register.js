@@ -31,13 +31,12 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
     if (isAuthenticated) {
         return <Redirect to="/dashboard" />;
     }
-
     return (
         <Fragment>
             <h1 className="large text-primary">Sign Up</h1>
             <p className="lead">
-                <i className="fas fa-user" /> Create Your Account
-      </p>
+                <i className="fa fa-user" /> Create Your Account
+            </p>
             <form className="form" onSubmit={onSubmit}>
                 <div className="form-group">
                     <input

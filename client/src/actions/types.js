@@ -22,8 +22,12 @@ export const DELETE_POST = 'DELETE_POST';
 export const ADD_POST = 'ADD_POST';
 export const ADD_COMMENT = 'ADD_COMMENT';
 export const REMOVE_COMMENT = 'REMOVE_COMMENT';
-
-
+export const GET_FLIGHTS = 'GET_FLIGHTS';
+export const FLIGHT_ERROR = 'FLIGHT_ERROR';
+export const ADD_FLIGHT = 'ADD_FLIGHT';
+export const REMOVE_FLIGHT = 'REMOVE_FLIGHT';
+export const ADD_CONTACT = 'ADD_CONTACT';
+export const CONTACT_ERROR = 'CONTACT_ERROR';
 
 
 

@@ -10,7 +10,7 @@ const AddEducation = ({ addEducation, history }) => {
         degree: '',
         fieldofstudy: '',
         from: '',
-        current: '',
+        current: false,
         to: '',
         description: ''
     });
@@ -34,7 +34,7 @@ const AddEducation = ({ addEducation, history }) => {
                 Add Your Education
             </h1>
             <p className="lead">
-                <i className="fas fa-graduation-cap"></i> Add any school, bootcamp, etc that
+                <i className="fa fa-graduation-cap"></i> Add any school, bootcamp, etc that
                 you have attended
             </p>
             <small>* = required field</small>
@@ -86,7 +86,7 @@ const AddEducation = ({ addEducation, history }) => {
                             value={current} onChange={e => {
                                 setFormData({ ...formData, current: !current });
                                 toggleDisabled(!toDateDisabled); /// To disable the toDate
-                            }} />{''} Current School
+                            }} />Current School
                     </p>
                 </div>
                 <div className="form-group">

@@ -11,11 +11,11 @@ const AddExperience = ({ addExperience, history }) => {
         company: '',
         location: '',
         from: '',
-        current: '',
+        current: false,
         to: '',
         description: ''
     });
-    // need to see
+
     const [toDateDisabled, toggleDisabled] = useState(false);
     const {
         title,
@@ -36,7 +36,7 @@ const AddExperience = ({ addExperience, history }) => {
                 Add An Experience
             </h1>
             <p className="lead">
-                <i className="fas fa-code-branch"></i> Add any developer/programming
+                <i className="fa fa-code-branch"></i> Add any developer/programming
                 positions that you have had in the past
             </p>
             <small>* = required field</small>
@@ -61,7 +61,7 @@ const AddExperience = ({ addExperience, history }) => {
                     <p><input type="checkbox" name="current" checked={current} value={current} onChange={e => {
                         setFormData({ ...formData, current: !current });
                         toggleDisabled(!toDateDisabled); /// To disable the toDate
-                    }} />{''} Current Job</p>
+                    }} /> Current Job</p>
                 </div>
                 <div className="form-group">
                     <h4>To Date</h4>

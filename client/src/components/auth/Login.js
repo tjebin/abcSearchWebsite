@@ -27,9 +27,9 @@ const Login = ({ login, isAuthenticated }) => {
     }
     return (
         <Fragment>
-            <h1 class="large text-primary">Login</h1>
-            <form class="form" onSubmit={e => onSubmit(e)}>
-                <div class="form-group">
+            <h1 className="large text-primary">Login</h1>
+            <form className="form" onSubmit={e => onSubmit(e)}>
+                <div className="form-group">
                     <input
                         type="email"
                         placeholder="Email Address"
@@ -37,11 +37,11 @@ const Login = ({ login, isAuthenticated }) => {
                         value={email}
                         onChange={e => onChange(e)}
                     />
-                    <small class="form-text">This site uses Gravatar so if you want a profile image, use a
+                    <small className="form-text">This site uses Gravatar so if you want a profile image, use a
                     Gravatar email
                     </small>
                 </div>
-                <div class="form-group">
+                <div className="form-group">
                     <input
                         type="password"
                         placeholder="Password"
@@ -50,9 +50,9 @@ const Login = ({ login, isAuthenticated }) => {
                         onChange={e => onChange(e)}
                     />
                 </div>
-                <input type="submit" class="btn btn-primary" value="Login" />
+                <input type="submit" className="btn btn-primary" value="Login" />
             </form>
-            <p class="my-1">
+            <p className="my-1">
                 Don't have an account? <Link to="/register">Register</Link>
             </p>
         </Fragment>

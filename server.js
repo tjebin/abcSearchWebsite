@@ -3,25 +3,32 @@ const connectDB = require('./config/db');
 var cors = require('cors');
 const path = require('path');
 const app = express();
+
+console.log('@@ Server2 started........................');
 // The routes
 const users = require('./routes/api/users');
 const posts = require('./routes/api/posts');
 const profile = require('./routes/api/profile');
 const auth = require('./routes/api/auth');
+const flight = require('./routes/api/flights');
+const contact = require('./routes/api/contacts');
+
 
 connectDB();
+
+
+
 //Init Middleware
 app.use(express.json({ extended: false }));
 //app.get('/', (req, res) => res.send('API Running'));
-//app.use(cors());
+app.use(cors());
 // define routes
 app.use('/api/users', users);
 app.use('/api/posts', posts);
 app.use('/api/profile', profile);
 app.use('/api/auth', auth);
-
-console.log('.....................server started' + process.env.NODE_ENV);
-
+app.use('/api/flights', flight);
+app.use('/api/contacts', contact);
 
 if (process.env.NODE_ENV === 'production') {
     // set static folder
