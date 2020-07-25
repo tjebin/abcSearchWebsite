@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Media } from 'reactstrap';
 import { BreadcrumbItem, Breadcrumb } from 'reactstrap';
-
 import '../App.css';
 class Home extends Component {
     constructor(props) {

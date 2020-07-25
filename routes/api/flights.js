@@ -3,7 +3,7 @@ const router = express.Router();
 const auth = require('../../middleware/auth');
 const { check, validationResult } = require('express-validator/check');
 const Flight = require('../../models/Flight');
-
+/*
 router.get('/', async (req, res) => {
 
     try {
@@ -18,6 +18,34 @@ router.get('/', async (req, res) => {
         res.status(500).send(err.msg);
     }
 })
+
+*/
+
+router.get('/', async (req, res) => {
+    try {
+        for (const key in req.query) {
+            console.log(key, req.query[key])
+        }
+
+        const flights = await Flight.find({
+            from: req.query.from,
+            to: req.query.to,
+            departureDate: req.query.departure,
+            arrivalDate: req.query.arrival
+        });
+
+        console.log('...flights found.....' + flights.length);
+        if (flights.length == 0) {
+            return res.status(400).json({
+                msg: 'There is no flights'
+            });
+        }
+        res.json(flights);
+    } catch (err) {
+        res.status(500).send(err.msg);
+    }
+})
+
 
 // To post a new flight
 router.post('/', [
@@ -48,7 +76,6 @@ router.post('/', [
 ], async (req, res) => {
     const errors = validationResult(req);
 
-    console.log("...... @ Server ......" + req);
     if (!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array() });
     }

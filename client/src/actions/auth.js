@@ -8,12 +8,12 @@ import {
     LOGOUT,
     CLEAR_PROFILE
 } from './types';
+
 import axios from 'axios';
 import { setAlert } from './alert';
 import setAuthToken from '../utils/setAuthToken'
 // user authentication
 export const loadUser = () => async dispatch => {
-    alert('Load user');
     if (localStorage.token) {
         // axios.defaults.headers.common['x-auth-token'] = token;
         setAuthToken(localStorage.token);
@@ -41,6 +41,7 @@ export const register = ({ name, email, password }) => async dispatch => {
     const body = JSON.stringify({ name, email, password });
     try {
         const res = await axios.post('http://localhost:5000/api/users', body, config);
+        //alert("res ...." + res.data);
         dispatch({
             type: REGISTER_SUCCESS,
             payload: res.data

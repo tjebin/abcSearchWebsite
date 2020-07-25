@@ -5,6 +5,7 @@ import Spinner from '../layout/Spinner';
 import PostItem from './PostItem';
 import { getPosts } from '../../actions/post';
 import PostForm from './PostForm';
+import { Link } from 'react-router-dom';
 
 const Post = ({ getPosts, post: { posts, loading } }) => {
     useEffect(() => {
@@ -23,6 +24,9 @@ const Post = ({ getPosts, post: { posts, loading } }) => {
                     <PostItem key={post._id} post={post} />
                 ))}
             </div>
+            <Link to='/dashboard' className="btn btn-success">
+                To Dashboard
+            </Link>
         </Fragment>
     );
 }

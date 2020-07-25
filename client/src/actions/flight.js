@@ -2,18 +2,24 @@ import {
     GET_FLIGHTS,
     FLIGHT_ERROR,
     ADD_FLIGHT,
-    REMOVE_FLIGHT
+    REMOVE_FLIGHT,
+    REMOVE_ALERT
 } from './types';
-
 import axios from 'axios';
 import { setAlert } from './alert';
+
 // To get all flights
-export const getFlights = () => async dispatch => {
+export const getFlights = (formData) => async dispatch => {
     try {
-        const res = await axios.get('http://localhost:5000/api/flights');
+        let url = `http://localhost:5000/api/flights?from=${formData.from}&to=${formData.to}&departure=${formData.departure}&arrival=${formData.arrival}`;
+        const res = await axios.get(url);
+        dispatch({
+            type: REMOVE_ALERT
+        });
+
         dispatch({
             type: GET_FLIGHTS,
-            payload: res.data // to get all  posts
+            payload: res.data // to get all flights
         });
     } catch (err) {
         dispatch({
@@ -24,8 +30,7 @@ export const getFlights = () => async dispatch => {
 }
 
 // To add flight
-
-export const addFlight = (formData, history) => async dispatch => {
+export const addFlight = (formData) => async dispatch => {
     try {
         const config = {
             headers: {
@@ -33,16 +38,15 @@ export const addFlight = (formData, history) => async dispatch => {
             }
         }
         const res = await axios.post('http://localhost:5000/api/flights', formData, config);
-        console.log("1  Add_flight action" + res.data.length);
-
+        dispatch({
+            type: REMOVE_ALERT
+        });
 
         dispatch({
             type: ADD_FLIGHT,
-            payload: res.data // to get all flights
+            payload: res.data
         });
-
-
-        history.push("/flights");
+        dispatch(setAlert('Flight Added !! ', 'success'));
     } catch (err) {
         const errors = err.response.data.errors;
         if (errors) {

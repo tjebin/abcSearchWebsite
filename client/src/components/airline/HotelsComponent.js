@@ -1,12 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import {
-    Breadcrumb, BreadcrumbItem,
-    Card, CardImg, CardText,
-    CardTitle
-} from 'reactstrap';
+import { Breadcrumb, BreadcrumbItem, Card, CardTitle } from 'reactstrap';
 import '../App.css';
-
 
 class Hotels extends Component {
     constructor(props) {
@@ -23,7 +18,7 @@ class Hotels extends Component {
         const AllHotels = ({ availableHotels }) => (
             availableHotels.map((eachHotel) => {
                 return (
-                    <div className='elementToFadeInAndOut'>{eachHotel.name}</div>
+                    <div key={eachHotel.id} className='elementToFadeInAndOut'>{eachHotel.name}</div>
                 );
             })
         )
@@ -55,6 +50,5 @@ class Hotels extends Component {
         )
     }
 };
-
 
 export default Hotels;

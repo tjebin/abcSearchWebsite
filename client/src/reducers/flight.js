@@ -24,7 +24,7 @@ export default function (state = initialState, action) {
         case ADD_FLIGHT:
             return {
                 ...state,
-                flights: payload,
+                // flights: payload,
                 loading: false
             };
         case FLIGHT_ERROR:

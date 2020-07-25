@@ -7,7 +7,6 @@ import { Link } from 'react-router-dom';
 import { addFlight } from '../../actions/flight';
 import { REMOVE_ALERT } from '../../actions/types';
 import store from '../../store';
-
 import Alert from '../layout/Alert';
 
 const FlightForm = ({ addFlight, history }) => {
@@ -50,92 +49,104 @@ const FlightForm = ({ addFlight, history }) => {
                     </Breadcrumb>
                 </div>
             </div>
-
             <p className="lead">
-                Add available flights
+                Add Flights
                 </p>
             <small>* = required field</small>
             <form className="form" onSubmit={e => {
                 e.preventDefault();
-                addFlight(formData, history);
+                addFlight(formData);
             }}>
                 <div className="form-group">
+                    *
                     <i className="fa fa-plane"></i>
                     <input
                         type="text"
-                        placeholder="Depating From "
+                        placeholder="From"
                         name="from"
-
                         value={from}
+                        required
                         onChange={e => onChange(e)}
                     />
                 </div>
                 <div className="form-group">
+                    *
                     <i className="fa fa-plane"></i>
                     <input
                         type="text"
                         placeholder="Destination"
                         name="to"
                         value={to}
+                        required
                         onChange={e => onChange(e)}
                     />
                 </div>
                 <div className="form-group">
-                    <label>From Date</label>
+                    <label>* From Date</label>
                     <input
                         type="date"
                         name="departureDate"
                         placeholder="Destination"
                         value={departureDate}
+                        required
                         onChange={e => onChange(e)} />
                 </div>
                 <div className="form-group">
-                    <label>To Date</label>
+                    <label>* To Date</label>
                     <input
                         type="date"
                         name="arrivalDate"
                         value={arrivalDate}
+                        required
                         onChange={e => onChange(e)}
                     />
                 </div>
                 <div className="form-group">
+                    *
                     <input
                         type="text"
                         placeholder="Price"
                         name="price"
                         value={price}
+                        required
                         onChange={e => onChange(e)}
                     />
                 </div>
                 <div className="form-group">
+                    *
                     <input
                         type="text"
                         placeholder="Airline"
                         name="airlineName"
                         value={airlineName}
+                        required
                         onChange={e => onChange(e)}
                     />
                 </div>
                 <div className="form-group">
+                    *
                     <input
                         type="text"
                         placeholder="Route"
                         name="route"
                         value={route}
+                        required
                         onChange={e => onChange(e)}
                     />
                 </div>
                 <div className="form-group">
+                    *
                     <input
                         type="text"
                         placeholder="Deal"
                         name="deal"
                         value={deal}
+                        required
                         onChange={e => onChange(e)}
                     />
                 </div>
                 <input type="submit" className="btn btn-primary my-1" />
-                <a className="btn btn-light my-1" href="dashboard.html">Go Back</a>
+                <Link to="/flights">Go Back</Link>
             </form>
             <Alert />
         </div>

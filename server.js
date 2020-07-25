@@ -4,7 +4,6 @@ var cors = require('cors');
 const path = require('path');
 const app = express();
 
-console.log('@@ Server2 started........................');
 // The routes
 const users = require('./routes/api/users');
 const posts = require('./routes/api/posts');
@@ -13,10 +12,7 @@ const auth = require('./routes/api/auth');
 const flight = require('./routes/api/flights');
 const contact = require('./routes/api/contacts');
 
-
 connectDB();
-
-
 
 //Init Middleware
 app.use(express.json({ extended: false }));

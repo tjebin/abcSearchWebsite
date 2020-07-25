@@ -1,34 +1,23 @@
 
-html {
-  height: 100%;
-  width:100%;
-}
-
-body {
-  height: 100%;
-  padding:0px;
-  margin:0px;
+* {
+  margin: 0;
+  padding: 0;
 }
 
 body.modal-open {
   overflow:scroll;
 }
 
-.mainContainer {
-  width: 100%;
-  padding:0px;
-}
-
-.container {
-	width: 100%;
-	padding:0px;
-}
-
 .fixed {
-	position:fixed;
-	width:100%;
-	z-index:1;
-	top:0;
+  position: fixed;
+  /* center the element */
+  top:0;
+  right: 0;
+  left: 0;
+  margin-right: auto;
+  margin-left: auto;
+  width: 93%;
+  z-index:1;
 }
 
 .jumbotron {
@@ -37,25 +26,17 @@ body.modal-open {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  height:200px;
   color:floralwhite;
-  position:relative;
-  top:60px;
-  
 }
 
 .modal-open {
    padding-right: 0px !important;
 }
 
-.padding10{
-	padding-top : 5px;	
-}
-
 .paddingBottom{
 	padding-bottom : 50px;
 }
-.marginBottom{
+.marginBottom {
 	margin-bottom : 50px;
 }
 
@@ -72,9 +53,6 @@ body.modal-open {
   border-bottom: #EA215A 0.125em solid;
 }
 
-a.filterStyle:hover {
-  opacity:0.5;
-}
 
 .footer {
     background-color: rgba(0, 0, 0, 0.1); 
@@ -253,12 +231,31 @@ ul.options li.option-active {
 .flightsContainer {
   background-color: black;
   overflow: scroll;
-   height: 500px;
+  height: 500px;
 }
-
 
 .alertBox{
   margin:auto 0px;
   height:50px;
 }
 
+.dashboard_Nav ul li{
+  background-color: #512DA8;
+  opacity: 0.5;
+  width:100px;
+  border:1px solid gray;
+  color:white;
+  text-align:center;
+  font-family: sans-serif;
+  cursor:grab;
+}
+
+.dashboard_Nav li:hover {
+  background-color: black;
+  color:white;
+}
+
+.link{
+  text-decoration: 'none';
+  color: 'white' 
+}

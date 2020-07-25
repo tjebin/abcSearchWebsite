@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import {
-    Nav, Navbar, NavbarBrand, NavbarToggler, Collapse, NavItem, Jumbotron, Modal, ModalHeader, ModalBody,
-    Button, Form, FormGroup, Label, Input
+    Nav, Navbar, NavbarBrand, NavbarToggler, Collapse, NavItem, Jumbotron
 } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
 import '../App.css';
@@ -10,11 +9,8 @@ class Header extends Component {
     constructor(props) {
         super(props);
         this.toggleNav = this.toggleNav.bind(this);
-        this.toggleModal = this.toggleModal.bind(this);
-        this.handleLogin = this.handleLogin.bind(this);
         this.state = {
-            isNavOpen: false,
-            isModalOpen: false,
+            isNavOpen: false
         };
     }
 
@@ -23,25 +19,12 @@ class Header extends Component {
             isNavOpen: !this.state.isNavOpen
         });
     }
-
-    toggleModal() {
-        this.setState({
-            isModalOpen: !this.state.isModalOpen
-        });
-    }
-
-    handleLogin(event) {
-        this.toggleModal();
-        alert("Username: " + this.username.value + " Password: " + this.password.value
-            + " Remember: " + this.remember.checked);
-        event.preventDefault();
-    }
-
     render() {
         return (
             <>
                 <div className="fixed">
                     <Navbar dark expand="md" >
+                        <NavbarToggler onClick={this.toggleNav} />
                         <NavbarBrand className="mr-auto" href="/">ABC Airlines</NavbarBrand>
                         <Collapse isOpen={this.state.isNavOpen} navbar>
                             <Nav navbar>
@@ -61,24 +44,18 @@ class Header extends Component {
                                     <NavLink className="nav-link" to='/contact'><span className="fa fa-address-card fa-lg"></span> Contact Us</NavLink>
                                 </NavItem>
                                 <NavItem>
-                                    <NavLink className="nav-link" to='/contact'><span className="fa fa-sign-in fa-lg ml-auto"></span> Login</NavLink>
+                                    <NavLink className="nav-link" to='/login'><span className="fa fa-sign-in fa-lg ml-auto"></span> Login/Dasboard</NavLink>
                                 </NavItem>
                             </Nav>
                         </Collapse>
                     </Navbar>
                 </div>
-                <div className="marginTop">
+                <Jumbotron>
                     <div>
-                        <Jumbotron>
-                            <div>
-                                <div>
-                                    <h1>ABC Search</h1>
-                                    <p>ABC Search aims to find the best deals on hotels,restaurants and airline tickets.So that you can get the best deals.</p>
-                                </div>
-                            </div>
-                        </Jumbotron>
+                        <h1>ABC Search</h1>
+                        <p>ABC Search aims to find the best deals on hotels,restaurants and airline tickets.So that you can get the best deals.</p>
                     </div>
-                </div>
+                </Jumbotron>
             </>
         );
     }

@@ -5,8 +5,6 @@ import {
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
-// implementation of components with passed props
-
 class Deals extends Component {
     render() {
         const deal = this.props.deals.map((deal) => {

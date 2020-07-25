@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import { createProfile, getCurrentProfile } from '../../actions/profile';
 
 const EditProfile = ({ profile: { profile, loading }, createProfile, getCurrentProfile, history }) => {
+
     const [formData, setFormData] = useState({
         company: '',
         website: '',
@@ -16,9 +17,7 @@ const EditProfile = ({ profile: { profile, loading }, createProfile, getCurrentP
         bio: '',
         twitter: '',
         facebook: '',
-        linkedin: '',
-        youtube: '',
-        instagram: ''
+        youtube: ''
     });
     const [displaySocialInputs, toggleSocialInputs] = useState(false);
     useEffect(() => {
@@ -33,9 +32,7 @@ const EditProfile = ({ profile: { profile, loading }, createProfile, getCurrentP
             bio: loading || !profile.bio ? '' : profile.bio,
             twitter: loading || !profile.social ? '' : profile.social.twitter,
             facebook: loading || !profile.social ? '' : profile.social.facebook,
-            linkedin: loading || !profile.social ? '' : profile.social.linkedin,
-            youtube: loading || !profile.social ? '' : profile.social.youtube,
-            instagram: loading || !profile.social ? '' : profile.social.instagram
+            youtube: loading || !profile.social ? '' : profile.social.youtube
         });
     }, [loading, getCurrentProfile]);
 
@@ -49,9 +46,7 @@ const EditProfile = ({ profile: { profile, loading }, createProfile, getCurrentP
         bio,
         twitter,
         facebook,
-        linkedin,
-        youtube,
-        instagram
+        youtube
     } = formData;
 
     const onChange = (e) => {
@@ -154,18 +149,10 @@ const EditProfile = ({ profile: { profile, loading }, createProfile, getCurrentP
                             <i className="fab fa-youtube fa-2x"></i>
                             <input type="text" placeholder="YouTube URL" name="youtube" value={youtube} onChange={e => onChange(e)} />
                         </div>
-                        <div className="form-group social-input">
-                            <i className="fab fa-linkedin fa-2x"></i>
-                            <input type="text" placeholder="Linkedin URL" name="linkedin" value={linkedin} onChange={e => onChange(e)} />
-                        </div>
-                        <div className="form-group social-input">
-                            <i className="fab fa-instagram fa-2x"></i>
-                            <input type="text" placeholder="Instagram URL" name="instagram" value={instagram} onChange={e => onChange(e)} />
-                        </div>
                     </Fragment>}
                 <input type="submit" className="btn btn-primary my-1" />
                 <Link className="btn btn-light my-1" to="/dashboard">
-                    Go Back
+                    Go Back To Dashboard
                 </Link>
             </form>
         </Fragment>
@@ -179,7 +166,9 @@ EditProfile.propTypes = {
 };
 
 const mapStateToProps = state => ({
-    profile: state.profile
+    profile: state.profile,
+    auth: state.auth
 });
+
 
 export default connect(mapStateToProps, { createProfile, getCurrentProfile })(withRouter(EditProfile));

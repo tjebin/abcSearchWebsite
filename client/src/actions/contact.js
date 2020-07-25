@@ -18,17 +18,14 @@ export const addContact = (formData) => async dispatch => {
             type: ADD_CONTACT,
             payload: res.data
         });
-        alert("1");
         dispatch(setAlert('Contact Created!!! ', 'success'));
     } catch (err) {
-        alert("2" + err.msg);
         const errors = err.response.data.errors;
         if (errors) {
             errors.forEach(error => dispatch(setAlert(error.msg, 'danger')))
         }
 
         dispatch(setAlert('Could not be saved', 'danger'))
-
         dispatch({
             type: CONTACT_ERROR,
             payload: { msg: err.response.statusText, status: err.response.status }

@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect } from 'react';
+import React, { Fragment, useState } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -6,13 +6,9 @@ import { BreadcrumbItem, Breadcrumb } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { getFlights } from '../../actions/flight';
 import FlightItem from './FlightItem';
+import Alert from '../layout/Alert';
 
 const Flights = ({ getFlights, flights, loading }) => {
-
-    // alert(" loading -" + loading + " flights " + flights + " flights length -" + flights.length);
-    useEffect(() => {
-        getFlights();
-    }, [getFlights]);
     const [formData, setFormData] = useState({
         from: '',
         to: '',
@@ -49,7 +45,7 @@ const Flights = ({ getFlights, flights, loading }) => {
                 <small>* = required field</small>
                 <form className="form" onSubmit={e => {
                     e.preventDefault();
-                    getFlights();
+                    getFlights(formData);
                 }}>
                     <div className="form-group">
                         <i className="fa fa-plane"></i>
@@ -57,8 +53,8 @@ const Flights = ({ getFlights, flights, loading }) => {
                             type="text"
                             placeholder="Depating From "
                             name="from"
-                            required
                             value={from}
+                            required
                             onChange={e => onChange(e)}
                         />
                     </div>
@@ -69,8 +65,8 @@ const Flights = ({ getFlights, flights, loading }) => {
                             placeholder="Destination"
                             name="to"
                             value={to}
-                            onChange={e => onChange(e)}
                             required
+                            onChange={e => onChange(e)}
                         />
                     </div>
                     <div className="form-group">
@@ -80,32 +76,37 @@ const Flights = ({ getFlights, flights, loading }) => {
                             name="departure"
                             placeholder="Destination"
                             value={departure}
+                            required
                             onChange={e => onChange(e)} />
                     </div>
                     <div className="form-group">
                         <label>To Date</label>
                         <input type="date"
                             name="arrival"
-                            value={arrival} onChange={e => onChange(e)}
+                            value={arrival}
+                            required
+                            onChange={e => onChange(e)}
                         />
                     </div>
                     <input type="submit" className="btn btn-primary my-1" />
                     <a className="btn btn-light my-1" href="dashboard.html">Go Back</a>
                 </form>
                 <div className="my-1">
-                    <h2 className="text-primary">Flights Available</h2>
-                    <div className="flightsContainer bg-white pp-2">
-                        {!loading && flights && flights.length > 0 ? (
-                            <Fragment>
-                                {flights.map(flight => (
-                                    <FlightItem key={flight._id} flight={flight} />
-                                )
-                                )}
-                            </Fragment>)
-                            : (<h4>No experience credentials </h4>
+                    {!loading && flights && flights.length > 0 && (
+                        <div className="flightsContainer bg-white pp-2">
+                            {!loading && flights && flights.length > 0 && (
+                                <Fragment>
+                                    {flights.map(flight => (
+                                        <FlightItem key={flight._id} flight={flight} />
+                                    )
+                                    )}
+                                </Fragment>
                             )}
-                    </div>
+                        </div>
+                    )}
+
                 </div>
+                <Alert />
             </div>
         </Fragment >
     );

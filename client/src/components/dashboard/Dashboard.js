@@ -7,19 +7,32 @@ import Spinner from '../layout/Spinner';
 import DashboardActions from './DashboardActions';
 import Experience from './Experience';
 import Education from './Education';
+import { logout } from '../../actions/auth';
 
 const Dashboard = ({
-    auth: { user },
     getCurrentProfile,
     profile: { profile, loading },
-    deleteAccount
+    deleteAccount,
+    logout,
+    auth: { user }
 }) => {
     useEffect(() => {
         getCurrentProfile();
     }, [getCurrentProfile]);
+
     return loading && profile === null ? <Spinner /> :
-        <Fragment>
+        <div className="container">
             <h1 className="large text-primary">Dasboard</h1>
+            <div className="dashboard_Nav">
+                <ul>
+                    <li>
+                        <Link to="/posts" style={{ textDecoration: 'none', color: 'white' }}>Posts</Link>
+                    </li>
+                    <li>
+                        <Link to="/logout" style={{ textDecoration: 'none', color: 'white' }} onClick={() => logout()}>Logout</Link>
+                    </li>
+                </ul>
+            </div>
             <p className="lead">
                 <i className="fa fa-user">
                     Welcome {user && user.name}
@@ -44,19 +57,20 @@ const Dashboard = ({
                     </Link>
                 </Fragment>
             }
-        </Fragment>;
+        </div>;
 }
 
 Dashboard.propTypes = {
     getCurrentProfile: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired,
     profile: PropTypes.object.isRequired,
-    deleteAccount: PropTypes.func.isRequired
+    deleteAccount: PropTypes.func.isRequired,
+    logout: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => ({
     auth: state.auth,
-    profile: state.profile
+    profile: state.profile,
 });
 
-export default connect(mapStateToProps, { getCurrentProfile, deleteAccount })(Dashboard);
+export default connect(mapStateToProps, { getCurrentProfile, deleteAccount, logout })(Dashboard);
